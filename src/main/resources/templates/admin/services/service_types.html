@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/main-layout}">
+
+<head>
+	<title>Services</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+	<div class="main-header clearfix">
+		<div class="page-title">
+			<h3 class="no-margin">Dashboard</h3>
+			<span>Welcome [[${session.authenticated_user.userInfo.first_name}]]...</span> </span>
+		</div>
+		<!-- /page-title -->
+	</div>
+	<!-- /main-header -->
+
+	<div class="grey-container" th:if="${session.authenticated_user.hasRole('ATTENDANCE_REGISTERER')}">
+		<a th:href="@{attendance_keeper}" class="btn btn-danger quick-btn"><i class="fa fa-table"></i><span>Attendance</span></a>
+	</div>
+	<!-- /grey-container -->
+
+	<div class="padding-md" th:if="${session.authenticated_user.hasRole('ADMIN')}">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading clearfix">
+						<div class="pull-right">
+							<span class="clickable"><i class="fa fa-search"></i></span>
+							<span class="clickable"><i class="fa fa-wrench"></i></span>
+							<span class="clickable"> <i class="fa fa-chevron-down"></i> </span>
+						</div>
+						<h4 class="panel-title">Services</h4>
+					</div>
+					<div class="panel-body">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<a th:href="@{/admin/services/addService}">
+									<img th:src="@{/img/images/16x16/add-16x16.png}" />  New Service
+								</a>
+								<span class="badge badge-success m-left-xs" th:text="${services.size()}">0</span>
+							</div>
+							<table class="table table-bordered table-condensed table-hover table-striped">
+								<thead>
+								<tr>
+									<th>ID</th>
+									<th>Name</th>
+									<th>ABV</th>
+									<th>Operaions</th>
+								</tr>
+								</thead>
+								<tbody>
+
+								<tr th:each="service : ${services}">
+									<td th:text="${service.id}">service</td>
+									<td th:text="${service.name}">service</td>
+									<td th:text="${service.abv}">service</td>
+									<td>
+										<a th:href="@{|/admin/services/viewService/${service.id}|}"><img th:src="@{/img/images/24x24/view.png}" /></a>
+										<a th:href="@{|/admin/services/editService/${service.id}|}"><img th:src="@{/img/images/24x24/edit.png}" /></a>
+										<a th:href="@{|/admin/services/${service.id}|}"><img th:src="@{/img/images/24x24/delete.png}" /></a>
+									</td>
+								</tr>
+
+								</tbody>
+							</table>
+						</div><!-- /panel -->
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head>
+	<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">dclm</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="keywords" content="Home" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<link rel="shortcut icon" type="text/css" th:href="@{img/index.png}" />
+	<!-- Bootstrap core CSS -->
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+
+	<!-- Font Awesome -->
+	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css" />
+
+	<!-- Pace -->
+	<link th:href="@{/css/pace.css}" rel="stylesheet" type="text/css" />
+
+	<!-- Chosen -->
+	<link th:href="@{/css/chosen.min.css}" rel="stylesheet">
+
+	<!-- Datepicker -->
+	<link th:href="@{/css/datepicker.css}" rel="stylesheet" type="text/css" />
+
+	<!-- Timepicker -->
+	<link th:href="@{/css/bootstrap-timepicker.css}" rel="stylesheet">
+
+	<!-- Slider -->
+	<link th:href="@{/css/slider.css}" rel="stylesheet">
+
+	<!-- Tag input -->
+	<link th:href="@{/css/jquery.tagsinput.css}" rel="stylesheet">
+
+	<!-- WYSIHTML5 -->
+	<link th:href="@{/css/bootstrap-wysihtml5.css}" rel="stylesheet">
+
+	<!-- Color box -->
+	<link th:href="@{/css/colorbox.css}" rel="stylesheet"  type="text/css" />
+
+	<!-- Morris -->
+	<link th:href="@{/css/morris.css}" rel="stylesheet"  type="text/css" />
+
+	<!-- Endless -->
+	<link th:href="@{/css/endless.css}" rel="stylesheet"  type="text/css" />
+	<link th:href="@{/css/endless-skin.css}" rel="stylesheet"  type="text/css" />
+
+	<!-- Style -->
+	<link th:href="@{/css/style.css}" rel="stylesheet"  type="text/css" />
+</head>
+
+<body>
+
+	<div id="theme-setting">
+		<div class="title">
+			<strong class="no-margin">Skin Color</strong>
+		</div>
+		<div class="theme-box">
+			<a class="theme-color" style="background:#323447" id="default"></a>
+			<a class="theme-color" style="background:#efefef" id="skin-1"></a>
+			<a class="theme-color" style="background:#a93922" id="skin-2"></a>
+			<a class="theme-color" style="background:#3e6b96" id="skin-3"></a>
+			<a class="theme-color" style="background:#635247" id="skin-4"></a>
+			<a class="theme-color" style="background:#3a3a3a" id="skin-5"></a>
+			<a class="theme-color" style="background:#495B6C" id="skin-6"></a>
+		</div>
+		<div class="title">
+			<strong class="no-margin">Sidebar Menu</strong>
+		</div>
+		<div class="theme-box">
+			<label class="label-checkbox">
+				<input type="checkbox" id="fixedSidebar">
+				<span class="custom-checkbox"></span>
+				Fixed Sidebar
+			</label>
+		</div>
+	</div><!-- /theme-setting -->
+
+	<div class="preload" id="wrapper">
+
+		<div th:insert="fragments/topnav :: topnav"></div>
+
+		<div id="main-container">
+
+			<div id="breadcrumb" class="breadcrumb-fixed">
+				<ul class="breadcrumb">
+					<li><i class="fa fa-home"></i><a th:href="@{/home}"> Home</a></li>
+					<li class="pull-right" th:text="${session.authenticated_user.roles}">Default</li>
+				</ul>
+			</div>
+
+
+			<div th:replace="fragments/breadcrumb :: breadcrumb(${ {'admin', 'continents', 'countries'} })"></div>
+			<!-- /breadcrumb-->
+
+			<div layout:fragment="content">
+			</div>
+		</div>
+
+		<div th:insert="fragments/footer :: footer"></div>
+
+	</div>
+
+	<a href="" id="scroll-to-top" class="hidden-print"><i
+		class="fa fa-chevron-up"></i></a>
+
+	<!-- Logout confirmation -->
+	<div class="custom-popup width-100" id="logoutConfirm">
+		<div class="padding-md">
+			<h4 class="m-top-none">Do you want to logout?</h4>
+		</div>
+
+		<div class="text-center">
+		
+		<form method="post" th:action="@{/logout}">
+			<div class="col text-center">
+				<button class="btn btn-danger">Logout</button>
+			<a class="btn btn-success logoutConfirm_close">Cancel</a>
+		    </div>
+		</form>
+		</div>
+	</div>
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!-- Jquery -->
+	<script th:src="@{/js/jquery/jquery-1.10.2.min.js}"></script>
+
+	<!-- Bootstrap -->
+	<script th:src="@{/js/bootstrap.js}"></script>
+
+	<!-- Parsley -->
+	<script th:src="@{/js/parsley.min.js}"></script>
+
+	<!-- Chosen -->
+	<script th:src="@{/js/chosen.jquery.min.js}"></script>
+
+	<!-- Mask-input -->
+	<script th:src="@{/js/jquery.maskedinput.min.js}"></script>
+
+	<!-- Datepicker -->
+	<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+
+	<!-- Timepicker -->
+	<script th:src="@{/js/bootstrap-timepicker.min.js}"></script>
+
+	<!-- Slider -->
+	<script th:src="@{/js/bootstrap-slider.min.js}"></script>
+
+	<!-- Tag input -->
+	<script th:src="@{/js/jquery.tagsinput.min.js}"></script>
+
+	<!-- WYSIHTML5 -->
+	<script th:src="@{/js/wysihtml5-0.3.0.min.js}"></script>
+	<script th:src="@{/js/bootstrap-wysihtml5.js}"></script>
+
+	<!-- Morris -->
+	<script th:src="@{/js/rapheal.min.js}"></script>
+	<script th:src="@{/js/morris.min.js}"></script>
+
+	<!-- Colorbox -->
+	<script th:src="@{/js/jquery/jquery.colorbox.min.js}"></script>
+
+	<!-- Sparkline -->
+	<script th:src="@{/js/jquery/jquery.sparkline.min.js}"></script>
+
+	<!-- Pace -->
+	<script th:src="@{/js/pace.js}"></script>
+
+	<!-- Popup Overlay -->
+	<script th:src="@{/js/jquery/jquery.popupoverlay.min.js}"></script>
+
+	<!-- Slimscroll -->
+	<script th:src="@{/js/jquery/jquery.slimscroll.min.js}"></script>
+
+	<!-- Modernizr -->
+	<script th:src="@{/js/modernizr.min.js}"></script>
+
+	<!-- Cookie -->
+	<script th:src="@{/js/jquery/jquery.cookie.min.js}"></script>
+
+	<!-- Endless -->
+	<script th:src="@{/js/endless/endless_form.js}"></script>
+	<script th:src="@{/js/endless/endless.js}"></script>
+
+
+	<!-- Pace -->
+	<script th:src="@{/js/collapse.js}"></script>
+</body>
+
+</html>

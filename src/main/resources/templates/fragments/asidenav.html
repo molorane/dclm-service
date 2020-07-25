@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<aside class="fixed skin-6" th:fragment="asidenav(role)">
+	<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+	<div class="sidebar-inner scrollable-sidebar" style="overflow: hidden; width: auto; height: 100%;">
+		<div class="size-toggle">
+			<a class="btn btn-sm" id="sizeToggle">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="btn btn-sm pull-right logoutConfirm_open"  href="#logoutConfirm">
+				<i class="fa fa-power-off"></i>
+			</a>
+		</div><!-- /size-toggle -->	
+		<div class="user-block clearfix">
+			<img th:src="@{|/img/profiles/${session.authenticated_user.userInfo.profile}|}"  alt="User profile">
+			<div class="detail">
+				<strong>[[${session.authenticated_user.userInfo.user_id}]]</strong>
+				<ul class="list-inline">
+					<li><a th:href="@{profile}">Profile</a></li>
+					<li><a href="inbox" class="no-margin">Inbox</a></li>
+				</ul>
+			</div>
+		</div><!-- /user-block -->
+		<div class="main-menu">
+			<ul>
+				<li class="active">
+					<a href="home">
+						<span class="menu-icon">
+							<i class="fa fa-desktop fa-lg"></i> 
+						</span>
+						<span class="text">
+							Dashboard
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+				</li>
+				<li>
+					<a th:href="@{profile}">
+						<span class="menu-icon">
+							<i class="fa fa-user fa-lg"></i> 
+						</span>
+						<span class="text">
+							Profile
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+				</li>
+			</ul>
+			<div class="alert alert-info">
+				[[${session.denomination.mission}]]
+			</div>
+		</div><!-- /main-menu -->
+	</div>
+	<div class="slimScrollBar" style="width: 0px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 478.893px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 0px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div><!-- /sidebar-inner -->
+</aside>
+
+</body>
+
+</html>
+		

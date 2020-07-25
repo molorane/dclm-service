@@ -1,0 +1,95 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="topnav" id="top-nav" class="fixed skin-1">
+
+	<a th:href="@{/home}" class="brand">
+		<img th:src="@{/img/index.png}" width="40" height="40"  alt="Profile picture" />
+	</a><!-- /brand -->					
+
+	<ul class="nav-notification clearfix">
+		<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<i class="fa fa-bell fa-lg"></i>
+				<span class="notification-label bounceIn animation-delay6">5</span>
+			</a>
+			<ul class="dropdown-menu notification dropdown-3">
+				<li><a href="#">You have 5 new notifications</a></li>					  
+				<li>
+					<a href="#">
+						<span class="notification-icon bg-warning">
+							<i class="fa fa-warning"></i>
+						</span>
+						<span class="m-left-xs">Server #2 not responding.</span>
+						<span class="time text-muted">Just now</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="notification-icon bg-success">
+							<i class="fa fa-plus"></i>
+						</span>
+						<span class="m-left-xs">New user registration.</span>
+						<span class="time text-muted">2m ago</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="notification-icon bg-danger">
+							<i class="fa fa-bolt"></i>
+						</span>
+						<span class="m-left-xs">Application error.</span>
+						<span class="time text-muted">5m ago</span>
+					</a>
+				</li>
+				<li>
+					<a href="index.#">
+						<span class="notification-icon bg-success">
+							<i class="fa fa-usd"></i>
+						</span>
+						<span class="m-left-xs">2 items sold.</span>
+						<span class="time text-muted">1hr ago</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="notification-icon bg-success">
+							<i class="fa fa-plus"></i>
+						</span>
+						<span class="m-left-xs">New user registration.</span>
+						<span class="time text-muted">1hr ago</span>
+					</a>
+				</li>
+				<li><a href="#">View all notifications</a></li>					  
+			</ul>
+		</li>
+		<li class="profile dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				<strong>[[${session.authenticated_user.userInfo.last_name + " " + session.authenticated_user.userInfo.first_name}]]</strong>
+				<span><i class="fa fa-chevron-down"></i></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a class="clearfix" href="#">
+						<img th:src="@{|/img/profiles/${session.authenticated_user.userInfo.profile}|}" alt="User profile">
+						<div class="detail">
+							<strong th:text="${session.authenticated_user.username}">No name</strong>
+							<p class="grey">[[${session.authenticated_user.email}]]</p>
+						</div>
+					</a>
+				</li>
+				<li><a tabindex="-1" th:href="@{/profile}" class="main-link"><i class="fa fa-edit fa-lg"></i> Edit profile</a></li>
+				<li><a tabindex="-1" href="gallery" class="main-link"><i class="fa fa-picture-o fa-lg"></i> Photo Gallery</a></li>
+				<li><a tabindex="-1" href="#" class="theme-setting"><i class="fa fa-cog fa-lg"></i> Setting</a></li>
+				<li class="divider"></li>
+				<li>
+					<form method="post" th:action="@{/logout}">
+						<div class="col text-center">
+							<button class="btn btn-default"> <i class="fa fa-lock fa-lg"></i> Log out</button>
+					    </div>
+					</form>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+</html>

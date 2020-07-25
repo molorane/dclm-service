@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layouts/main-layout}">
+
+<head>
+	<title>Home</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+	<div class="main-header clearfix">
+		<div class="page-title">
+			<h3 class="no-margin">Dashboard</h3>
+			<span>Welcome [[${session.authenticated_user.userInfo.first_name}]]...</span> </span>
+		</div>
+		<!-- /page-title -->
+	</div>
+	<!-- /main-header -->
+
+    <div class="alert-animated">
+        <div class="alert-inner">
+            <div class="alert-message">
+                Welcome to <strong>[[${session.denomination.name}]]</strong>.
+            </div>
+        </div>
+    </div>
+
+	<div class="grey-container shortcut-wrapper">
+		<a href="#" class="shortcut-link">
+					<span class="shortcut-icon">
+						<img th:src="@{/img/images/32x32/skill_gap.png}" />
+					</span>
+			<span class="text">My Contacts</span>
+		</a>
+		<a href="#" class="shortcut-link">
+					<span class="shortcut-icon">
+						<img th:src="@{/img/images/32x32/graduation.png}" />
+					</span>
+			<span class="text">Education</span>
+		</a>
+		<a th:href="@{/profile}" class="shortcut-link">
+					<span class="shortcut-icon">
+						<img th:src="@{/img/images/32x32/profile.png}" />
+					</span>
+			<span class="text">Personal Info</span>
+		</a>
+		<a th:href="@{/profile/change_password}" class="shortcut-link">
+					<span class="shortcut-icon">
+						<img th:src="@{/img/images/32x32/lock.png}" />
+					</span>
+			<span class="text">Change Password</span>
+		</a>
+	</div><!-- /grey-container -->
+
+	<div class="grey-container" th:if="${session.authenticated_user.hasRole('ATTENDANCE_REGISTERER')}">
+		<a th:href="@{attendance_keeper}" class="btn btn-danger quick-btn"><i class="fa fa-table"></i><span>Attendance</span></a>
+	</div>
+	<!-- /grey-container -->
+
+	<div class="padding-md" th:if="${session.authenticated_user.hasRole('ADMIN')}">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="pull-right">
+							<span class="clickable"><i class="fa fa-wrench"></i></span>
+							<span class="clickable"> <i class="fa fa-chevron-down"></i> </span>
+						</div>
+						<h4 class="panel-title">Admin Options</h4>
+					</div>
+					<div class="panel-body">
+
+						<div class="text-center">
+							<div class="row">
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a href="#" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/users.png}" />
+											</span>
+										<span class="text">Members</span>
+									</a>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a th:href="@{/admin/continents}" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/locale.png}" />
+											</span>
+										<span class="text">Continents</span>
+									</a>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a href="#" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/note.png}" />
+												<span class="shortcut-alert"> 5 </span>
+											</span>
+										<span class="text">Notifications</span>
+									</a>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a href="#" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/keys.png}" />
+											</span>
+										<span class="text">Accounts</span>
+									</a>
+								</div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                                    <a href="#" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/classroom.png}" />
+											</span>
+                                        <span class="text">Conference</span>
+                                    </a>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                                    <a th:href="@{/admin/denomination/about}" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/information1.png}" />
+											</span>
+                                        <span class="text">About</span>
+                                    </a>
+                                </div>
+							</div>
+							<div class="row">
+
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a th:href="@{/admin/services}" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/services.png}" />
+											</span>
+										<span class="text">Services</span>
+									</a>
+								</div>
+
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a href="#" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/note.png}" />
+											</span>
+										<span class="text">Activity</span>
+									</a>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a href="#" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/church.png}" />
+											</span>
+										<span class="text">Churches</span>
+									</a>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a href="#" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/courses.png}" />
+											</span>
+										<span class="text">Courses</span>
+									</a>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a href="#" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/tests.png}" />
+											</span>
+										<span class="text">Attendance</span>
+									</a>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a href="#" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/books.png}" />
+											</span>
+										<span class="text">Campuses</span>
+									</a>
+								</div>
+							</div>
+							<div class="row">
+
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a th:href="@{/admin/qualifications}" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/certificate.png}" />
+											</span>
+										<span class="text">Qualifications</span>
+									</a>
+								</div>
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a href="#" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/options.png}" />
+											</span>
+										<span class="text">Setting</span>
+									</a>
+								</div>
+
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a th:href="@{/admin/continents}" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/social.png}" />
+											</span>
+										<span class="text">Countries</span>
+									</a>
+								</div>
+
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a th:href="@{/admin/stmc}" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/glossary.png}" />
+											</span>
+										<span class="text">STMC</span>
+									</a>
+								</div>
+
+								<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+									<a th:href="@{/admin/stmc}" class="shortcut-link">
+											<span class="shortcut-icon">
+												<img th:src="@{/img/images/32x32/marriage.png}" />
+											</span>
+										<span class="text">Weddings</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div><!-- /panel -->
+			</div>
+
+			<div class="col-lg-6">
+				<div class="panel panel-primary">
+					<div class="panel-heading clearfix">
+						<div class="pull-right">
+							<span class="clickable"><i class="fa fa-search"></i></span>
+							<span class="clickable"><i class="fa fa-wrench"></i></span>
+							<span class="clickable"> <i class="fa fa-chevron-down"></i> </span>
+						</div>
+						<h4 class="panel-title">Announcements</h4>
+					</div>
+					<div class="panel-body">
+						No announcements posted yet.
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.padding-md -->
+	<div class="col-lg-12 col-md-12">
+		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			This is just the initial design of the app
+		</div>
+	</div>
+</div>
+
+</div>
+
+</body>
+</html>
