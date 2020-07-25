@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    
+    <changeSet id="defaultRole" author="${author}">
+
+    	<insert tableName="${roleTable}">
+    		<column name="id" value="1" />
+    		<column name="name" value="ADMIN" />
+    		<column name="desc" value="ADMIN" />
+    	</insert>
+    	
+    	<insert tableName="${roleTable}">
+    		<column name="id" value="2" />
+    		<column name="name" value="SITE_USER" />
+    		<column name="desc" value="SITE_USER" />
+    	</insert>
+    	
+    	<insert tableName="${roleTable}">
+    		<column name="id" value="3" />
+    		<column name="name" value="SECRETARY" />
+    		<column name="desc" value="SECRETARY" />
+    	</insert>
+
+		<insert tableName="${roleTable}">
+			<column name="id" value="4" />
+			<column name="name" value="NATIONAL_OVERSEER" />
+			<column name="desc" value="NATIONAL_OVERSEER" />
+		</insert>
+
+		<insert tableName="${roleTable}">
+			<column name="id" value="5" />
+			<column name="name" value="LOCATION_PASTOR" />
+			<column name="desc" value="LOCATION_PASTOR" />
+		</insert>
+
+		<insert tableName="${roleTable}">
+			<column name="id" value="6" />
+			<column name="name" value="CAMPUS_PASTOR" />
+			<column name="desc" value="CAMPUS_PASTOR" />
+		</insert>
+
+		<insert tableName="${roleTable}">
+			<column name="id" value="7" />
+			<column name="name" value="ATTENDANCE_REGISTERER" />
+			<column name="desc" value="ATTENDANCE_REGISTERER" />
+		</insert>
+
+    </changeSet>
+    
+    
+    <changeSet id="defaultAccounts" author="${author}">
+    	
+    	<insert tableName="${userTable}">
+    		<column name="user_id" value="2014098616" />
+    		<column name="username" value="nomfundo" />
+    		<column name="email" value="nomfundo@gmail.com" />
+    		<column name="password" value="$2a$10$RDME3UDBPdx/VWsy4qPdhe/T93.dUj3dVybe0QH9lEOnGK5Js3W3W" />
+    		<column name="status" value="1" />
+    		<column name="is_locked" value="0" />
+    		<column name="is_active" value="1" />
+			<column name="expiry_date" valueDate="DATE_ADD(CURRENT_DATE,INTERVAL 30 DAY)" />
+    	</insert>
+
+    	<insert tableName="${userTable}">
+    		<column name="user_id" value="2014098617" />
+    		<column name="username" value="fedora" />
+    		<column name="email" value="fedora@plugit.co.za" />
+    		<column name="password" value="$2a$10$BYnzUkQZ7TobHTQBQBQf7u/t1Vy7XpLsUIYT6NA.mEO0CE/iwxeZ6" />
+    		<column name="status" value="1" />
+    		<column name="is_locked" value="0" />
+    		<column name="is_active" value="1" />
+			<column name="expiry_date" valueDate="${expiry_date}" />
+    	</insert>
+
+    	<insert tableName="${userTable}">
+    		<column name="user_id" value="2014098618" />
+    		<column name="username" value="blessy" />
+    		<column name="email" value="blessy@plugit.co.za" />
+    		<column name="password" value="$2a$10$RDME3UDBPdx/VWsy4qPdhe/T93.dUj3dVybe0QH9lEOnGK5Js3W3W" />
+    		<column name="status" value="1" />
+    		<column name="is_locked" value="0" />
+    		<column name="is_active" value="1" />
+			<column name="expiry_date" valueDate="${expiry_date}" />
+    	</insert>
+
+    	<insert tableName="${userTable}">
+    		<column name="user_id" value="2014098619" />
+    		<column name="username" value="langi" />
+    		<column name="email" value="langi@plugit.co.za" />
+    		<column name="password" value="$2a$10$RDME3UDBPdx/VWsy4qPdhe/T93.dUj3dVybe0QH9lEOnGK5Js3W3W" />
+    		<column name="status" value="1" />
+    		<column name="is_locked" value="0" />
+    		<column name="is_active" value="1" />
+			<column name="expiry_date" valueDate="${expiry_date}" />
+    	</insert>
+
+    	<insert tableName="${userTable}">
+    		<column name="user_id" value="2019" />
+    		<column name="username" value="admin" />
+    		<column name="email" value="admin@plugit.co.za" />
+    		<column name="password" value="$2a$10$RDME3UDBPdx/VWsy4qPdhe/T93.dUj3dVybe0QH9lEOnGK5Js3W3W" />
+    		<column name="status" value="1" />
+    		<column name="is_locked" value="0" />
+    		<column name="is_active" value="1" />
+			<column name="expiry_date" valueDate="${expiry_date}" />
+    	</insert>
+
+		<insert tableName="${userTable}">
+			<column name="user_id" value="2018" />
+			<column name="username" value="madw" />
+			<column name="email" value="madw@dclm.org" />
+			<column name="password" value="$2a$10$RDME3UDBPdx/VWsy4qPdhe/T93.dUj3dVybe0QH9lEOnGK5Js3W3W" />
+			<column name="status" value="1" />
+			<column name="is_locked" value="0" />
+			<column name="is_active" value="1" />
+			<column name="expiry_date" valueDate="${expiry_date}" />
+		</insert>
+
+    </changeSet>
+    
+    <changeSet id="defaultAccountRoles" author="${author}">
+    
+    	<insert tableName="${userRoleTable}">
+    		<column name="user_id" value="2019" />
+    		<column name="role_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${userRoleTable}">
+    		<column name="user_id" value="2014098616" />
+    		<column name="role_id" value="4" />
+    	</insert>
+    	
+    	<insert tableName="${userRoleTable}">
+    		<column name="user_id" value="2014098617" />
+    		<column name="role_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${userRoleTable}">
+    		<column name="user_id" value="2014098618" />
+    		<column name="role_id" value="3" />
+    	</insert>
+
+		<insert tableName="${userRoleTable}">
+			<column name="user_id" value="2018" />
+			<column name="role_id" value="7" />
+		</insert>
+    
+    </changeSet>
+    
+    <changeSet id="defaultAccountInfo" author="${author}">
+    
+    	<insert tableName="${userInfoTable}">
+    		<column name="user_id" value="2019" />
+    		<column name="last_name" value="Molorane" />
+    		<column name="first_name" value="Mothusi" />
+    		<column name="other_name" value="Michael" />
+    		<column name="dob" value="1991-05-04" />
+			<column name="gender" value="MALE" />
+    		<column name="profile" value="2019.jpg" />
+    	</insert>
+    	
+    	<insert tableName="${userInfoTable}">
+    		<column name="user_id" value="2014098616" />
+    		<column name="last_name" value="Mahlalela" />
+    		<column name="first_name" value="Nomfundo" />
+    		<column name="other_name" value="Millicent" />
+    		<column name="dob" value="1988-05-04" />
+			<column name="gender" value="FEMALE" />
+    		<column name="profile" value="2014098616.jpg" />
+    	</insert>
+    	
+    	<insert tableName="${userInfoTable}">
+    		<column name="user_id" value="2014098617" />
+    		<column name="last_name" value="Fedora" />
+    		<column name="first_name" value="RedHat" />
+    		<column name="other_name" value="JBoss" />
+    		<column name="dob" value="1995-05-04" />
+			<column name="gender" value="MALE" />
+    		<column name="profile" value="2014098617.jpg" />
+    	</insert>
+    	
+    	<insert tableName="${userInfoTable}">
+    		<column name="user_id" value="2014098618" />
+    		<column name="last_name" value="Molorane" />
+    		<column name="first_name" value="Blessing" />
+    		<column name="other_name" value="Blessy" />
+    		<column name="dob" value="1991-05-04" />
+			<column name="gender" value="FEMALE" />
+    		<column name="profile" value="2014098618.jpg" />
+    	</insert>
+
+		<insert tableName="${userInfoTable}">
+			<column name="user_id" value="2018" />
+			<column name="last_name" value="Portia" />
+			<column name="first_name" value="Khumalo" />
+			<column name="other_name" value="Dear" />
+			<column name="dob" value="1991-05-04" />
+			<column name="gender" value="FEMALE" />
+			<column name="profile" value="2014098618.jpg" />
+		</insert>
+    
+    </changeSet>
+    
+    <changeSet id="denominationInfo" author="${author}">
+    	
+    	<insert tableName="${denominationTable}">
+    		<column name="id" value="1" />
+    		<column name="name" value="Deeper Christian Life Ministry South Africa" />
+    		<column name="sname" value="DCLM" />
+    		<column name="country" value="Nigeria" />
+    		<column name="founder" value="William Kumuyi Fulio" />
+    		<column name="start_date" value="1973-01-01" />
+    		<column name="hq" value="Abujar" />
+    		<column name="gps_lat" value="9.0962524" />
+    		<column name="gps_long" value="7.2822984" />
+    		<column name="logo" value="2014098618.jpg" />
+    		<column name="mission" value="Your Spiritual Welfare is our concern" />
+    		<column name="updated_by" value="2014098617" />
+    	</insert>
+    
+    </changeSet>
+    
+     <changeSet id="continents" author="${author}">
+    	
+    	<insert tableName="${continentTable}">
+    		<column name="id" value="1" />
+    		<column name="name" value="Africa" />
+    	</insert>
+    	
+    	<insert tableName="${continentTable}">
+    		<column name="id" value="2" />
+    		<column name="name" value="Asia" />
+    	</insert>
+    	
+    	<insert tableName="${continentTable}">
+    		<column name="id" value="3" />
+    		<column name="name" value="Europe" />
+    	</insert>
+    	
+    	<insert tableName="${continentTable}">
+    		<column name="id" value="4" />
+    		<column name="name" value="South America" />
+    	</insert>
+    	
+    	<insert tableName="${continentTable}">
+    		<column name="id" value="5" />
+    		<column name="name" value="North America" />
+    	</insert>
+    	
+    	<insert tableName="${continentTable}">
+    		<column name="id" value="6" />
+    		<column name="name" value="Australia" />
+    	</insert>
+    	
+    	<insert tableName="${continentTable}">
+    		<column name="id" value="7" />
+    		<column name="name" value="Antarctica" />
+    	</insert>
+    
+    </changeSet>
+    
+    <include file="/db/changelog/db.african.countries.xml" />
+	<include file="/db/changelog/db.asian.countries.xml" />
+	<include file="/db/changelog/db.europian.countries.xml" />
+	<include file="/db/changelog/db.south-america.countries.xml" />
+	<include file="/db/changelog/db.north-america.countries.xml" />
+	<include file="/db/changelog/db.australian.countries.xml" />
+    
+    <changeSet id="qualifications" author="${author}">
+    
+    	<insert tableName="${qualificationTable}">
+    		<column name="id" value="1" />
+    		<column name="name" value="Diploma" />
+    	</insert>
+    	
+    	<insert tableName="${qualificationTable}">
+    		<column name="id" value="2" />
+    		<column name="name" value="Degree" />
+    	</insert>
+    	
+    	<insert tableName="${qualificationTable}">
+    		<column name="id" value="3" />
+    		<column name="name" value="Certificate" />
+    	</insert>
+    	
+    	<insert tableName="${qualificationTable}">
+    		<column name="id" value="4" />
+    		<column name="name" value="Honours" />
+    	</insert>
+    	
+    	<insert tableName="${qualificationTable}">
+    		<column name="id" value="5" />
+    		<column name="name" value="Masters" />
+    	</insert>
+    	
+    	<insert tableName="${qualificationTable}">
+    		<column name="id" value="6" />
+    		<column name="name" value="PhD" />
+    	</insert>
+    	
+    	<insert tableName="${qualificationTable}">
+    		<column name="id" value="7" />
+    		<column name="name" value="Cambridge A-level" />
+    	</insert>
+    	
+    	<insert tableName="${qualificationTable}">
+    		<column name="id" value="8" />
+    		<column name="name" value="Cambridge O-level" />
+    	</insert>
+    	
+    	<insert tableName="${qualificationTable}">
+    		<column name="id" value="9" />
+    		<column name="name" value="Matric" />
+    	</insert>
+    	
+    	<insert tableName="${qualificationTable}">
+    		<column name="id" value="10" />
+    		<column name="name" value="Post Doc" />
+    	</insert>
+    
+    </changeSet>
+    
+    <changeSet id="courses" author="${author}">
+    
+    	<insert tableName="${courseTable}">
+    		<column name="name" value="Primary School" />
+    	</insert>
+    
+    	<insert tableName="${courseTable}">
+    		<column name="name" value="High School" />
+    	</insert>
+    	
+    	<insert tableName="${courseTable}">
+    		<column name="name" value="Computer Science" />
+    	</insert>
+    	
+    	<insert tableName="${courseTable}">
+    		<column name="name" value="Medicine" />
+    	</insert>
+    	
+    	<insert tableName="${courseTable}">
+    		<column name="name" value="Accounting" />
+    	</insert>
+    	
+    	<insert tableName="${courseTable}">
+    		<column name="name" value="Education" />
+    	</insert>
+    	
+    </changeSet>
+    
+    <changeSet id="institution_types" author="${author}">
+    	
+    	<insert tableName="${institution_typeTable}">
+    		<column name="type" value="Primary School" />
+    	</insert>
+    
+    	<insert tableName="${institution_typeTable}">
+    		<column name="type" value="High School" />
+    	</insert>
+    	
+    	<insert tableName="${institution_typeTable}">
+    		<column name="type" value="College" />
+    	</insert>
+    	
+    	<insert tableName="${institution_typeTable}">
+    		<column name="type" value="University" />
+    	</insert>
+    	
+    </changeSet>
+    
+    <changeSet id="statuses" author="${author}">
+    	
+    	<insert tableName="${statusTable}">
+    		<column name="status" value="Completed" />
+    	</insert>
+    	
+    	<insert tableName="${statusTable}">
+    		<column name="status" value="Incomplete" />
+    	</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="Closed" />
+		</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="Active" />
+		</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="In progress" />
+		</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="Postponed" />
+		</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="Overdue" />
+		</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="Dropped Out" />
+		</insert>
+    	
+    </changeSet>
+    
+    <include file="/db/changelog/db.institutions.xml" />
+    
+     
+    <changeSet id="students" author="${author}">
+    	
+    	<insert tableName="${studentTable}">
+    		<column name="user_id" value="2019" />
+    		<column name="institution_branch_id" value="1" />
+    		<column name="course_id" value="1" />
+    		<column name="qualification_id" value="8" />
+    		<column name="completed" value="2004" />
+    		<column name="status_id" value="1" />
+    		<column name="recorded_by" value="2019" />
+    	</insert>
+    	
+    	<insert tableName="${studentTable}">
+    		<column name="user_id" value="2019" />
+    		<column name="institution_branch_id" value="2" />
+    		<column name="course_id" value="2" />
+    		<column name="qualification_id" value="2" />
+    		<column name="completed" value="2009" />
+    		<column name="status_id" value="1" />
+    		<column name="recorded_by" value="2019" />
+    	</insert>
+    	
+    	<insert tableName="${studentTable}">
+    		<column name="user_id" value="2019" />
+    		<column name="institution_branch_id" value="3" />
+    		<column name="course_id" value="3" />
+    		<column name="qualification_id" value="2" />
+    		<column name="completed" value="2014" />
+    		<column name="status_id" value="2" />
+    		<column name="recorded_by" value="2019" />
+    	</insert>
+    	
+    	<insert tableName="${studentTable}">
+    		<column name="user_id" value="2019" />
+    		<column name="institution_branch_id" value="4" />
+    		<column name="course_id" value="3" />
+    		<column name="qualification_id" value="2" />
+    		<column name="completed" value="2017" />
+    		<column name="status_id" value="1" />
+    		<column name="recorded_by" value="2019" />
+    	</insert>
+    	
+    	<insert tableName="${studentTable}">
+    		<column name="user_id" value="2019" />
+    		<column name="institution_branch_id" value="4" />
+    		<column name="course_id" value="3" />
+    		<column name="qualification_id" value="4" />
+    		<column name="completed" value="2018" />
+    		<column name="status_id" value="1" />
+    		<column name="recorded_by" value="2019" />
+    	</insert>
+    	
+    </changeSet>
+
+	<changeSet id="modifyDenominationFounder" author="${author}">
+		<validCheckSum>8:c1db9163c8d660c498a6486cb2c8168b</validCheckSum>
+		<update tableName="${denominationTable}">
+			<column name="founder" value="William Fulio Kumuyi" />
+			<where>id='1'</where>
+		</update>
+	</changeSet>
+
+
+    
+    
+</databaseChangeLog>

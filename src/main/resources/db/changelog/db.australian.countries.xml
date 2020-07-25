@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+        
+
+       <changeSet id="australian-countries" author="${author}">
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Australia" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Fiji" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Kiribati" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Marshall Islands" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Micronesia" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Nauru" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="New Zealand" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Palau" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Papua New Guinea" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Samoa" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Solomon Islands" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Tonga" />
+    		<column name="continent_id" value="6" />
+    	</insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Tuvalu" />
+			   <column name="continent_id" value="6" />
+		   </insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Vanuatu" />
+			   <column name="continent_id" value="6" />
+		   </insert>
+    </changeSet>
+     
+     
+    
+</databaseChangeLog>

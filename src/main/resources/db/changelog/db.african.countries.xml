@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+        
+
+       <changeSet id="african-countries" author="${author}">
+    	
+    	<insert tableName="${countryTable}">
+			<column name="id" value="1" />
+    		<column name="name" value="Lesotho" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+			<column name="id" value="2" />
+    		<column name="name" value="South Africa" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Swaziland" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Botswana" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Zambia" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Zimbabwe" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Malawi" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Mozambique" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Angola" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Namibia" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Tanzania" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="DRC" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Madagascar" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Seychelles" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Mauritius" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Kenya" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Uganda" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Rwanda" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Burundi" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="South Sudan" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Djibouti" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Eritrea" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Ethiopia" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Somalia" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Comoros" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Reunion" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Mayotte" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Sudan" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Benin" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Burkina Faso" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Cape Verde" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Côte d'Ivoire" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Gambia" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Ghana" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Guinea" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Guinea-Bissau" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Liberia" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Mali" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Mauritania" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Niger" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Nigeria" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Senegal" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Sierra Leone" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Togo" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Chad" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Tunisia" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Libya" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Central African Republic" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Sao Tome Principe" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Equatorial Guinea" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Cameroon" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Morocco" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Algeria" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Egypt" />
+    		<column name="continent_id" value="1" />
+    	</insert>
+    	
+    </changeSet>
+     
+     
+    
+</databaseChangeLog>

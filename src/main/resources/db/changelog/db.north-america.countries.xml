@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+        
+
+       <changeSet id="north-america-countries" author="${author}">
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Antigua and Barbuda" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Bahamas" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Barbados" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Belize" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Canada" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Costa Rica" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Cuba" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Dominica" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Dominican Republic" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="El Salvador" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Grenada" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+    	
+    	<insert tableName="${countryTable}">
+    		<column name="name" value="Haiti" />
+    		<column name="continent_id" value="5" />
+    	</insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Honduras" />
+			   <column name="continent_id" value="5" />
+		   </insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Jamaica" />
+			   <column name="continent_id" value="5" />
+		   </insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Mexico" />
+			   <column name="continent_id" value="5" />
+		   </insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Nicaragua" />
+			   <column name="continent_id" value="5" />
+		   </insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Panama" />
+			   <column name="continent_id" value="5" />
+		   </insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Saint Kitts and Nevis" />
+			   <column name="continent_id" value="5" />
+		   </insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Saint Lucia" />
+			   <column name="continent_id" value="5" />
+		   </insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Saint Vincent and the Grenadines" />
+			   <column name="continent_id" value="5" />
+		   </insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="Trinidad and Tobago" />
+			   <column name="continent_id" value="5" />
+		   </insert>
+
+		   <insert tableName="${countryTable}">
+			   <column name="name" value="United States of America (USA)" />
+			   <column name="continent_id" value="5" />
+		   </insert>
+    	
+    </changeSet>
+     
+     
+    
+</databaseChangeLog>
