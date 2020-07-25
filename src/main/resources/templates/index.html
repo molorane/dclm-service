@@ -25,6 +25,8 @@
             <div class="alert-message">
                 Welcome to <strong>[[${session.denomination.name}]]</strong>.
             </div>
+
+			<div th:text="${#request.contextPath}" />
         </div>
     </div>
 
