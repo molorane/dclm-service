@@ -2,20 +2,10 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-	
-	<include file="/db/changelog/db.constants.xml" />
-	
-    <include file="/db/changelog/db.init.xml" />
    
-    <include file="/db/changelog/db.changelog-1.0.2.xml" />
-
-    <include file="/db/changelog/db.changelog-1.0.3.xml" />
-
-    <include file="/db/changelog/db.changelog-churches.xml" />
-
-    <include file="/db/changelog/db.changelog-church-services.xml" />
-
-    <include file="/db/changelog/db.changelog-attendance.xml" />
+    <include file="/db/changelog/db.changelog-1.0.0.yml" />
+    <include file="/db/changelog/db.changelog-2.0.0.yml" />
+    <include file="/db/changelog/db.changelog-3.0.0.yml" />
    
     
 </databaseChangeLog>
