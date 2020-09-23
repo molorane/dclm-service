@@ -26,7 +26,6 @@ public class ProfileController {
 
 	@RequestMapping
 	public String profile(Model model, HttpSession httpSession) {
-
 		model.addAttribute("authenticated_user", httpSession.getAttribute("authenticated_user"));
 		return WebPage.PROFILE.getPageName();
 	}

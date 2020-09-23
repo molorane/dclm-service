@@ -14,161 +14,74 @@
 	<div class="main-header clearfix">
 		<div class="page-title">
 			<h3 class="no-margin">Dashboard</h3>
-			<span>Welcome [[${session.authenticated_user.accountInfo.first_name}]]...</span>
+			<span>Welcome [[*{session.authenticated_user.accountInfo.first_name}]]...</span>
 		</div>
 		<!-- /page-title -->
 	</div>
 	<!-- /main-header -->
 
-	<div class="padding-md" th:if="${session.authenticated_user.hasRole('ADMIN')}">
+	<div class="padding-md" th:if="*{session.authenticated_user.hasRole('ADMIN')}">
 		<div class="row">
 			<div class="col-lg-12">
 
-				<div th:if="${error == 'exist_email'}" class="alert alert-danger">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>Error!</strong> Email already exists!!
-				</div>
-
-				<div th:if="${saved}" class="alert alert-success">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true"><img th:src="@{/img/images/16x16/error_delete.png}" /></button>
-					<img th:src="@{/img/images/16x16/success.png}" /> <strong>Success!</strong> information updated
-				</div>
-
 				<div class="panel panel-primary">
 					<div class="panel-heading clearfix">
-						<div class="pull-right">
-							<span class="clickable"><i class="fa fa-search"></i></span>
-							<span class="clickable"><i class="fa fa-wrench"></i></span>
-							<span class="clickable"> <i class="fa fa-chevron-down"></i> </span>
-						</div>
-						<h4 class="panel-title">Edit Denomination</h4>
+						<h4 class="panel-title">Denomination</h4>
 					</div>
 					<div class="panel-body">
 						<div class="panel panel-default">
 							<div class="panel-tab clearfix">
 								<ul class="tab-bar">
-									<li class="active"><a href="#" data-toggle="tab"><i class="fa fa-edit"></i> Denomination Setting</a></li>
+									<li class="active"><a href="#" data-toggle="tab"><i class="fa fa-eye"></i> Denomination</a></li>
 								</ul>
 							</div>
 							<div class="panel-body">
 								<div class="tab-content">
 									<div class="tab-pane fade in active">
-										<ul class="list-group">
+										<ul class="list-group" th:object="${denomination}">
 											<li class="list-group-item clearfix inbox-item">
-												<span class="from" >USER ID</span>
-												<span class="detail" th:text="${session.authenticated_user.user_id}">
-												no value
-											</span>
-											</li>
-											<li class="list-group-item clearfix inbox-item">
-												<span class="from" >EMAIL</span>
-												<span class="detail" th:text="${session.authenticated_user.email}">
-												no value
-											</span>
-											</li>
-											<li class="list-group-item clearfix inbox-item">
-												<span class="from" >EXPIRY ON</span>
-												<span class="detail" th:text="${session.authenticated_user.expiryDate}">
-												no value
-											</span>
-											</li>
-											<li class="list-group-item clearfix inbox-item">
-												<span class="from" >CREATED ON</span>
-												<span class="detail" th:text="${session.authenticated_user.createdDate}">
-												no value
-											</span>
-											</li>
-										</ul><!-- /list-group -->
-										<form  class="form-horizontal" method="POST" th:action="@{|/admin/denomination/about|}" th:object="${denomination}">
-											<div class="form-group">
 												<label class="col-lg-2 control-label" for="name">Denomination name</label>
-												<div class="col-lg-10">
-													<input type="text" id="name" class="form-control input-sm bounceIn animation-delay2"
-														   th:field="*{name}" placeholder="Name here..">
-													<label th:if="${#fields.hasErrors('name')}"
-														   th:errors="*{name}" class="text-danger">Error name</label>
-												</div><!-- /.col -->
-											</div><!-- /form-group -->
-											<div class="form-group">
-												<label class="col-lg-2 control-label"  for="sname">Abbreviation
+												<span class="detail" th:text="*{name}">no value</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
+												<label class="col-lg-2 control-label" for="abv">Abbreviation
 													<a th:href="@{#}" data-container="body" data-toggle="popover" data-placement="top" data-content="Short name for service type. Not more than three characters" data-original-title="" title="">
 														<img th:src="@{/img/images/16x16/info.png}" />
 													</a>
 												</label>
-												<div class="col-lg-10">
-													<input type="text" id="sname" class="form-control input-sm bounceIn animation-delay2"
-														   th:field="*{abv}" placeholder="abv here..">
-													<label th:if="${#fields.hasErrors('abv')}"
-														   th:errors="*{abv}" class="text-danger">Error name</label>
-												</div><!-- /.col -->
-											</div><!-- /form-group -->
-											<div class="form-group">
+												<span class="detail" th:text="*{abv}">no value</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
 												<label class="col-lg-2 control-label" for="country">Country <span class=""></span></label>
-												<div class="col-lg-10">
-													<input type="text" id="country" class="form-control input-sm bounceIn animation-delay2"
-														   th:field="*{country}" placeholder="abv here..">
-													<label th:if="${#fields.hasErrors('country')}"
-														   th:errors="*{country}" class="text-danger">Error name</label>
-												</div>
-											</div><!-- /form-group -->
-											<div class="form-group">
+												<span class="detail" th:text="*{country}">
+												no value
+											</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
 												<label class="col-lg-2 control-label"  for="founder">Founder <span class=""></span></label>
-												<div class="col-lg-10">
-													<input type="text" id="founder" class="form-control input-sm bounceIn animation-delay2"
-														   th:field="*{founder}" placeholder="abv here..">
-													<label th:if="${#fields.hasErrors('founder')}"
-														   th:errors="*{founder}" class="text-danger">Error name</label>
-												</div>
-											</div><!-- /form-group -->
-                                            <div class="form-group">
-                                                <label class="col-lg-2 control-label" for="startDate">Start Date</label>
-                                                <div class="col-lg-10">
-                                                    <div class="input-group">
-                                                        <input type="text" th:field="*{startDate}" id="startDate"  value="06/10/2013" class="datepicker form-control input-sm  bounceIn animation-delay2">
-                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                        <label th:if="${#fields.hasErrors('startDate')}"
-                                                               th:errors="*{startDate}" class="text-danger">start date</label>
-                                                    </div>
-                                                </div>
-                                            </div><!-- /form-group -->
-											<div class="form-group">
+												<span class="detail" th:text="*{founder}">no value</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
+												<label class="col-lg-2 control-label" for="startDate">Start Date</label>
+												<span class="detail" th:text="*{startDate}">no value</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
 												<label class="col-lg-2 control-label" for="hq">Head Quartered <span class=""></span></label>
-												<div class="col-lg-10">
-													<input type="text" id="hq" class="form-control input-sm bounceIn animation-delay2"
-														   th:field="*{hq}" placeholder="hq here..">
-													<label th:if="${#fields.hasErrors('hq')}"
-														   th:errors="*{hq}" class="text-danger">Error name</label>
-												</div>
-											</div><!-- /form-group -->
-											<div class="form-group">
+												<span class="detail" th:text="*{hq}">no value</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
 												<label class="col-lg-2 control-label" for="gpsLat">GPS Latitude <span class=""></span></label>
-												<div class="col-lg-10">
-													<input type="text" id="gpsLat" class="form-control input-sm bounceIn animation-delay2"
-														   th:field="*{gpsLat}" placeholder="gpsLat here..">
-													<label th:if="${#fields.hasErrors('gpsLat')}"
-														   th:errors="*{gpsLat}" class="text-danger">Error name</label>
-												</div>
-											</div><!-- /form-group -->
-											<div class="form-group">
-												<label class="col-lg-2 control-label" for="gpsLat">GPS Latitude <span class=""></span></label>
-												<div class="col-lg-10">
-													<input type="text" id="gpsLong" class="form-control input-sm bounceIn animation-delay2"
-														   th:field="*{gpsLong}" placeholder="gpsLong here..">
-													<label th:if="${#fields.hasErrors('gpsLong')}"
-														   th:errors="*{gpsLong}" class="text-danger">Error name</label>
-												</div>
-											</div><!-- /form-group -->
-											<div class="form-group">
+												<span class="detail" th:text="*{gpsLat}">no value</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
+												<label class="col-lg-2 control-label" for="gpsLong">GPS Longitude <span class=""></span></label>
+												<span class="detail" th:text="*{gpsLong}">no value</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
 												<label class="col-lg-2 control-label" for="mission">Mission <span class=""></span></label>
-												<div class="col-lg-10">
-													<textarea th:field="*{mission}" id="mission" class="form-control bounceIn animation-delay2" rows="2">
-														no mission
-													</textarea>
-													<label th:if="${#fields.hasErrors('mission')}"
-														   th:errors="*{mission}" class="text-danger">Error name</label>
-												</div>
-											</div>
-										</form>
+												<span class="detail" th:text="*{mission}">no value</span>
+											</li>
+										</ul><!-- /list-group -->
 									</div>
 								</div>
 							</div>
