@@ -1,5 +1,8 @@
 package com.blessy.dclmservice.model;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -13,8 +16,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "tbl_user")
-public class User implements Serializable{
+@Getter
+@Setter
+@NoArgsConstructor
+public class Account implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -55,16 +60,23 @@ public class User implements Serializable{
 	private LocalDate expiryDate;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "user_role",
+	@JoinTable(name = "account_role",
 			joinColumns = @JoinColumn(name = "user_id"),
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<>();
+	private Set<AppRole> roles = new HashSet<>();
 	
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
-	private UserInfo userInfo;
-	
-	public User() {
+	private AccountInfo accountInfo;
+
+	public Account(Long user_id, String username, String email, String password, int status, Set<AppRole> roles) {
+		super();
+		this.user_id = user_id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.status = status;
+		this.roles = roles;
 	}
 
 	@PrePersist
@@ -75,114 +87,8 @@ public class User implements Serializable{
 		this.status = 1;
 	}
 
-	public User(Long user_id, String username, String email, String password, int status, Set<Role> roles) {
-		super();
-		this.user_id = user_id;
-		this.username = username;
-		this.email = email;
-		this.password = password;
-		this.status = status;
-		this.roles = roles;
-	}
-
-	public Long getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
-	}
-	
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
-	}
-
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getPassword_confirm() {
-		return password_confirm;
-	}
-
-	public void setPassword_confirm(String password_confirm) {
-		this.password_confirm = password_confirm;
-	}
-
-	public boolean isLocked() {
-		return isLocked;
-	}
-
-	public void setLocked(boolean isLocked) {
-		this.isLocked = isLocked;
-	}
-
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	public LocalDateTime getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(LocalDateTime createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public LocalDate getExpiryDate() {
-		return expiryDate;
-	}
-
-	public void setExpiryDate(LocalDate expiryDate) {
-		this.expiryDate = expiryDate;
-	}
-
 	public boolean accountExpired() {
 		return !expiryDate.isAfter(LocalDate.now());
-	}
-
-	public UserInfo getUserInfo() {
-		return userInfo;
-	}
-
-	public void setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
 	}
 
 	public boolean hasRole(String userRole){

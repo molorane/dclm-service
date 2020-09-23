@@ -14,7 +14,7 @@
 	<div class="main-header clearfix">
 		<div class="page-title">
 			<h3 class="no-margin">Dashboard</h3>
-			<span>Welcome [[${session.authenticated_user.userInfo.first_name}]]...</span>
+			<span>Welcome [[${session.authenticated_user.accountInfo.first_name}]]...</span>
 		</div>
 		<!-- /page-title -->
 	</div>
@@ -53,6 +53,32 @@
 							<div class="panel-body">
 								<div class="tab-content">
 									<div class="tab-pane fade in active">
+										<ul class="list-group">
+											<li class="list-group-item clearfix inbox-item">
+												<span class="from" >USER ID</span>
+												<span class="detail" th:text="${session.authenticated_user.user_id}">
+												no value
+											</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
+												<span class="from" >EMAIL</span>
+												<span class="detail" th:text="${session.authenticated_user.email}">
+												no value
+											</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
+												<span class="from" >EXPIRY ON</span>
+												<span class="detail" th:text="${session.authenticated_user.expiryDate}">
+												no value
+											</span>
+											</li>
+											<li class="list-group-item clearfix inbox-item">
+												<span class="from" >CREATED ON</span>
+												<span class="detail" th:text="${session.authenticated_user.createdDate}">
+												no value
+											</span>
+											</li>
+										</ul><!-- /list-group -->
 										<form  class="form-horizontal" method="POST" th:action="@{|/admin/denomination/about|}" th:object="${denomination}">
 											<div class="form-group">
 												<label class="col-lg-2 control-label" for="name">Denomination name</label>
@@ -71,9 +97,9 @@
 												</label>
 												<div class="col-lg-10">
 													<input type="text" id="sname" class="form-control input-sm bounceIn animation-delay2"
-														   th:field="*{sname}" placeholder="abv here..">
-													<label th:if="${#fields.hasErrors('sname')}"
-														   th:errors="*{sname}" class="text-danger">Error name</label>
+														   th:field="*{abv}" placeholder="abv here..">
+													<label th:if="${#fields.hasErrors('abv')}"
+														   th:errors="*{abv}" class="text-danger">Error name</label>
 												</div><!-- /.col -->
 											</div><!-- /form-group -->
 											<div class="form-group">
@@ -141,9 +167,6 @@
 													<label th:if="${#fields.hasErrors('mission')}"
 														   th:errors="*{mission}" class="text-danger">Error name</label>
 												</div>
-											</div><!-- /form-group -->
-											<div class="panel-footer text-right">
-												<button type="submit" class="btn btn-submit-endless btn-sm">Update</button>
 											</div>
 										</form>
 									</div>

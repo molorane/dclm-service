@@ -1,7 +1,7 @@
 package com.blessy.dclmservice.controller;
 
 import com.blessy.dclmservice.model.CustomUserDetails;
-import com.blessy.dclmservice.model.User;
+import com.blessy.dclmservice.model.Account;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +15,10 @@ public class LockScreenController {
 	public ModelAndView lockScreen(Authentication authentication) {
 		
 		CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-		User user = userDetails.getUser();
+		Account account = userDetails.getAccount();
 		
 		ModelAndView modelAndView = new ModelAndView("lock-screen");
-		modelAndView.addObject("user", user);
+		modelAndView.addObject("account", account);
 		
 		return modelAndView;
 	}

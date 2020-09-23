@@ -14,15 +14,15 @@ public class CustomUserDetails implements UserDetails {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private User user;
+	private Account account;
 
-	public CustomUserDetails(final  User user) {
-		this.user = user;
+	public CustomUserDetails(final Account account) {
+		this.account = account;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return user.getRoles()
+		return account.getRoles()
 			.stream()
 			.map(role -> new SimpleGrantedAuthority("ROLE_"+role.getRole()))
 			.collect(Collectors.toList());
@@ -38,22 +38,22 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return account.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return user.getUsername();
+		return account.getUsername();
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return !user.accountExpired();
+		return !account.accountExpired();
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return !user.isLocked();
+		return !account.isLocked();
 	}
 
 	@Override
@@ -64,11 +64,11 @@ public class CustomUserDetails implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return user.isActive();
+		return account.isActive();
 	}
 	
-	public User getUser() {
-		return user;
+	public Account getAccount() {
+		return account;
 	}
 
 }

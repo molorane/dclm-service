@@ -1,4 +1,4 @@
-package com.blessy.dclmservice.model;
+package com.blessy.dclmservice.model.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
-@RequiredArgsConstructor
 @Controller
 @RequestMapping("admin/continents")
+@RequiredArgsConstructor
 public class ContinentController {
 
     private final ContinentService continentService;

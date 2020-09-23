@@ -1,25 +1,25 @@
 package com.blessy.dclmservice.services.impl;
 
-import com.blessy.dclmservice.model.Role;
-import com.blessy.dclmservice.repository.RoleRepository;
-import com.blessy.dclmservice.services.RoleService;
+import com.blessy.dclmservice.model.AppRole;
+import com.blessy.dclmservice.repository.AppRoleRepository;
+import com.blessy.dclmservice.services.AppRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class RoleServiceImpl implements RoleService {
+public class AppRoleServiceImpl implements AppRoleService {
 	
 	@Autowired
-	RoleRepository roleRepo;
+	AppRoleRepository roleRepo;
 
 	@Override
-	public Role addRole(Role role) {
+	public AppRole addRole(AppRole role) {
 		// TODO Auto-generated method stub
 		return roleRepo.save(role);
 	}
 
 	@Override
-	public Role getRole(int role_id) {
+	public AppRole getRole(int role_id) {
 		// TODO Auto-generated method stub
 		return roleRepo.findById(role_id).get();
 	}

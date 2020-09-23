@@ -46,10 +46,10 @@
 					<strong>Error!</strong> Email already exists!!
 				</div>
 									
-					<form class="form-login" method="POST" th:action="@{/register}" th:object="${user.userInfo}">
+					<form class="form-login" method="POST" th:action="@{/register}" th:object="${user.accountInfo}">
 						<div class="form-group">
 							<label for="">LastName</label>
-							<input type="text" class="form-control input-sm" id="surname" placeholder="Surname" th:field="${user.userInfo.last_name}">
+							<input type="text" class="form-control input-sm" id="surname" placeholder="Surname" th:field="${user.accountInfo.last_name}">
 							<label th:if="${#fields.hasErrors('last_name')}" th:errors="*{last_name}" class="text-danger">Error username</label>
 						</div><!-- /form-group -->
 						<div class="form-group">

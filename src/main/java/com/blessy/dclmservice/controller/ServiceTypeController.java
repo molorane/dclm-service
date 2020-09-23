@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 
-@RequiredArgsConstructor
 @Controller
 @RequestMapping("admin/services")
+@RequiredArgsConstructor
 public class ServiceTypeController {
 
     private final ServiceTypeService serviceTypeService;

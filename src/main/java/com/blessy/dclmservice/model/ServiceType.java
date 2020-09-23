@@ -8,7 +8,6 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
-@Table(name = "service_type")
 public class ServiceType {
 
     @Id

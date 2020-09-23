@@ -102,10 +102,10 @@ databaseChangeLog:
                         name: youth_female
                         type: string
                     - column:
-                        name: children_male
+                        name: child_male
                         type: numeric
                     - column:
-                        name: children_female
+                        name: child_female
                         type: string
                     - column:
                         name: recorded_by

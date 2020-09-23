@@ -331,3 +331,21 @@ databaseChangeLog:
                 separator: ','
                 tableName: account_info
                 usePreparedStatements: true
+    - changeSet:
+        id: 2.1.6.load-account-roles
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: user_id
+                        type: numeric
+                    - column:
+                        name: role_id
+                        type: numeric
+                encoding: UTF-8
+                file: ../data/account-roles.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: account_role
+                usePreparedStatements: true

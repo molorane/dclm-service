@@ -1,9 +1,9 @@
 package com.blessy.dclmservice.services.impl;
 
 import com.blessy.dclmservice.model.CustomUserDetails;
-import com.blessy.dclmservice.model.Role;
-import com.blessy.dclmservice.model.User;
-import com.blessy.dclmservice.repository.UserRepository;
+import com.blessy.dclmservice.model.AppRole;
+import com.blessy.dclmservice.model.Account;
+import com.blessy.dclmservice.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -20,19 +20,19 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	private final UserRepository userRepository;
+	private final AccountRepository accountRepository;
 	protected final Log logger = LogFactory.getLog(this.getClass());
 	
 	@Transactional
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<User> optionalUser = userRepository.findByUsername(username);
+		Optional<Account> accountOptional = accountRepository.findByUsername(username);
 
-		optionalUser.orElseThrow(() -> new UsernameNotFoundException("Username " + username + " not found"));
+		accountOptional.orElseThrow(() -> new UsernameNotFoundException("Username " + username + " not found"));
 
-		toList(optionalUser.get().getRoles());
+		toList(accountOptional.get().getRoles());
 
-		return optionalUser.map(users -> new CustomUserDetails(users)).get();
+		return accountOptional.map(CustomUserDetails::new).get();
 
 //        if (optionalUser == null) {
 //            throw new UsernameNotFoundException(username);
@@ -41,8 +41,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //        return new CustomUserDetails(optionalUser.get());
 	}
 
-	public void toList(Set<Role> roles) {
-		for (Role role : roles) {
+	public void toList(Set<AppRole> roles) {
+		for (AppRole role : roles) {
 			logger.info("Role: " + role.getRole());
 		}
 	}

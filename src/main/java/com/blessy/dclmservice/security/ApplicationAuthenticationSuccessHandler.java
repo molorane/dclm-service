@@ -1,8 +1,8 @@
 package com.blessy.dclmservice.security;
 
+import com.blessy.dclmservice.config.DenominationProperties;
 import com.blessy.dclmservice.model.CustomUserDetails;
-import com.blessy.dclmservice.model.User;
-import com.blessy.dclmservice.services.DenominationService;
+import com.blessy.dclmservice.model.Account;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,19 +26,19 @@ public class ApplicationAuthenticationSuccessHandler extends SavedRequestAwareAu
     protected final Log logger = LogFactory.getLog(this.getClass());
 
     @Autowired
-    DenominationService denominationService;
+    DenominationProperties denominationProperties;
     
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication
             authentication) throws IOException, ServletException {
     	CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-		User user = userDetails.getUser();
+		Account account = userDetails.getAccount();
         HttpSession session = request.getSession();
-        session.setAttribute("authenticated_user", user);
-        session.setAttribute("denomination",denominationService.getDenomination(1));
+        session.setAttribute("authenticated_user", account);
+        session.setAttribute("denomination",denominationProperties);
         session.setMaxInactiveInterval(SESSION_INACTIVE_INTERVAL_SECONDS); // Possible to have this value change between Roles
 
-        logger.info(String.format("User %s successfully logged in", user.getEmail()));
+        logger.info(String.format("User %s successfully logged in", account.getEmail()));
 
         super.onAuthenticationSuccess(request, response, authentication);
     }

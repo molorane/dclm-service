@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "state")
 @Data
 public class State {
 
@@ -24,7 +23,7 @@ public class State {
     @NotEmpty(message = "state abv required.")
     @Column(nullable = false, unique = true)
     @Size(min = 2, max = 4, message = "State abv must have min 2 and max 4 characters.")
-    private String sname;
+    private String abv;
 
     @ManyToOne
     @JoinColumn(name="country_id", nullable=false)

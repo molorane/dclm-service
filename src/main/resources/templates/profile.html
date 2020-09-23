@@ -31,15 +31,15 @@
 				<li>
 					<a href="#edit" data-toggle="tab">
 						<span class="block text-center">
-							<i class="fa fa-edit fa-2x"></i> 
+							<i class="fa fa-user fa-2x"></i>
 						</span>
-						Edit Profile
+						Profile
 					</a>
 				</li>
 				<li>
 					<a href="#account" data-toggle="tab">
 						<span class="block text-center">
-							<i class="fa fa-user fa-2x"></i>
+							<i class="fa fa-lock fa-2x"></i>
 						</span>	
 						Account
 					</a>
@@ -60,15 +60,15 @@
 						<div class="row">
 							<div class="col-xs-6 col-sm-12 col-md-6 text-center">
 								<a href="profile.php#">
-									<img th:src="@{|/img/profiles/${user.userInfo.profile}|}" alt="Profile" class="img-thumbnail">
+									<img th:src="@{|/img/profiles/${session.authenticated_user.accountInfo.profile}|}" alt="Profile" class="img-thumbnail">
 								</a>
 								<div class="seperator"></div>
 								<div class="seperator"></div>
 							</div><!-- /.col -->
 							<div class="col-xs-6 col-sm-12 col-md-6">
-								<strong class="font-14">John Doe</strong>
+								<strong class="font-14">[[${session.authenticated_user.accountInfo.last_name + " " + session.authenticated_user.accountInfo.first_name}]]</strong>
 								<small class="block text-muted">
-									John_Doe@email.com
+									[[${session.authenticated_user.email}]]
 								</small> 
 								<div class="seperator"></div>
 								<a class="btn btn-success btn-xs m-bottom-sm">Follow</a>
@@ -328,32 +328,32 @@
 											<div class="form-group">
 												<label class="control-label col-md-2">Surname</label>												
 												<div class="col-md-10">
-													<input type="text" class="form-control input-sm" id="surname" placeholder="Surname" th:field="${user.userInfo.last_name}">
+													<input type="text" class="form-control input-sm" id="surname" placeholder="Surname" th:field="*{authenticated_user.accountInfo.last_name}">
 												</div><!-- /.col -->
 											</div><!-- /form-group -->
 											<div class="form-group">
 												<label class="control-label col-md-2">First Name</label>												
 												<div class="col-md-10">
-													<input type="text" class="form-control input-sm" id="first_name" placeholder="First Name" th:field="${user.userInfo.first_name}">
+													<input type="text" class="form-control input-sm" id="first_name" placeholder="First Name" th:field="*{authenticated_user.accountInfo.first_name}">
 												</div><!-- /.col -->
 											</div><!-- /form-group -->
 											<div class="form-group">
 												<label class="control-label col-md-2">Other Name</label>												
 												<div class="col-md-10">
-													<input type="text" class="form-control input-sm" id="other_name" placeholder="Other Name" th:field="${user.userInfo.other_name}">
+													<input type="text" class="form-control input-sm" id="other_name" placeholder="Other Name" th:field="*{authenticated_user.accountInfo.other_name}">
 												</div><!-- /.col -->
 											</div><!-- /form-group -->
 											<div class="form-group">
 												<label class="control-label col-md-2">Gender</label>
 												<div class="col-md-10">
 													<label class="label-radio inline">
-														<input type="radio" name="inline-radio" th:field="${user.userInfo.gender}"
+														<input type="radio" name="inline-radio" th:field="*{authenticated_user.accountInfo.gender}"
 														th:value="MALE"/>
 														<span class="custom-radio"></span>
 														Male
 													</label>
 													<label class="label-radio inline">
-														<input type="radio" name="inline-radio" th:field="${user.userInfo.gender}"
+														<input type="radio" name="inline-radio" th:field="*{authenticated_user.accountInfo.gender}"
 														th:value="FEMALE"/>
 														<span class="custom-radio"></span>
 														Female
@@ -364,7 +364,7 @@
 												<label class="control-label col-md-2">Date Of Birth</label>												
 												<div class="col-md-10">
 													<input type="date" class="form-control input-sm" id="dob" placeholder="DOB"
-														   th:field="${user.userInfo.dob}">
+														   th:field="*{authenticated_user.accountInfo.dob}">
 												</div><!-- /.col -->
 											</div><!-- /form-group -->
 											<div class="form-group">
@@ -467,7 +467,9 @@
 										About Me
 									</div>
 									<div class="panel-body padding-xs">
-										<textarea class="form-control no-border no-shadow" id="about_me" rows="5" placeholder="Who are you?"></textarea>
+										<textarea class="form-control no-border no-shadow" id="about_me" rows="5" placeholder="Who are you?">
+											 [[${session.authenticated_user.accountInfo.first_name}]]
+										</textarea>
 									</div>
 									<div class="panel-footer clearfix">
 										<button id="btnDes" class="btn btn-xs btn-success pull-right">Save</button>

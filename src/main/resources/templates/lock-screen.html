@@ -35,12 +35,12 @@
     			<div class="modal-content">
 				    <div class="modal-body">
 						<div class="lock-screen-img">
-							<img th:src="@{|/img/profiles/${user.userInfo.profile}|}"  alt="User profile">
+							<img th:src="@{|/img/profiles/${user.accountInfo.profile}|}"  alt="User profile">
 						</div>
 						
 						<div class="text-center m-top-sm">
 							<div class="h4 text-white">
-							[[${user.userInfo.last_name + " " + user.userInfo.first_name}]]</div>
+							[[${user.accountInfo.last_name + " " + user.accountInfo.first_name}]]</div>
 							
 							<div class="input-group m-top-sm"> 
 								<input type="password" class="form-control text-sm" placeholder="Enter your password"> 

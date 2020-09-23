@@ -18,9 +18,9 @@
 			</a>
 		</div><!-- /size-toggle -->	
 		<div class="user-block clearfix">
-			<img th:src="@{|/img/profiles/${session.authenticated_user.userInfo.profile}|}"  alt="User profile">
+			<img th:src="@{|/img/profiles/${session.authenticated_user.accountInfo.profile}|}"  alt="User profile">
 			<div class="detail">
-				<strong>[[${session.authenticated_user.userInfo.user_id}]]</strong>
+				<strong>[[${session.authenticated_user.accountInfo.user_id}]]</strong>
 				<ul class="list-inline">
 					<li><a th:href="@{profile}">Profile</a></li>
 					<li><a href="inbox" class="no-margin">Inbox</a></li>

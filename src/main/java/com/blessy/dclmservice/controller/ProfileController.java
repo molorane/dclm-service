@@ -1,40 +1,38 @@
 package com.blessy.dclmservice.controller;
 
-import com.blessy.dclmservice.model.User;
-import com.blessy.dclmservice.services.DenominationService;
-import com.blessy.dclmservice.services.UserService;
+import com.blessy.dclmservice.config.DenominationProperties;
+import com.blessy.dclmservice.model.Account;
+import com.blessy.dclmservice.services.AccountService;
+import com.blessy.dclmservice.services.AppRoleService;
 import com.blessy.dclmservice.utils.WebPage;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 
 @Controller
 @RequestMapping("/profile")
+@RequiredArgsConstructor
+@SessionAttributes("session")
 public class ProfileController {
 
-	private final UserService userService;
-	private final DenominationService denominationService;
-
-	@Autowired
-	public ProfileController(UserService userService, DenominationService denominationService){
-		this.userService = userService;
-		this.denominationService = denominationService;
-	}
+	private final AccountService accountService;
+	private final AppRoleService roleService;
 
 	@RequestMapping
-	public String profile(Principal principal, Model model) {
-		String username = principal.getName();
-		User user = userService.findByUsername(username).get();
-		model.addAttribute("user", user);
-		model.addAttribute("denomination", denominationService.getDenomination(1));
+	public String profile(Model model, HttpSession httpSession) {
+
+		model.addAttribute("authenticated_user", httpSession.getAttribute("authenticated_user"));
 		return WebPage.PROFILE.getPageName();
 	}
 
 	@RequestMapping("/change_password")
-	public String profile() {
+	public String changePassword() {
 		return WebPage.CHANGE_PASSWORD.getPageName();
 	}
 
