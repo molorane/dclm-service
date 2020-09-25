@@ -22,6 +22,15 @@ spring:
 
 ---
 
+# test profile
+spring:
+  profiles: test
+  cloud:
+    config:
+      uri: http://192.168.8.100:8888
+
+---
+
 # Dev profile
 spring:
   profiles: dev
