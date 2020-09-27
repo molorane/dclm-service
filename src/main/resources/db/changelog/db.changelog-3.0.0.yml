@@ -125,3 +125,68 @@ databaseChangeLog:
                 separator: ','
                 tableName: attendance
                 usePreparedStatements: true
+    - changeSet:
+        id: 3.0.1.add-column-abv
+        author: Mothusi Molorane
+        changes:
+            - addColumn:
+                tableName: church_category
+                columns:
+                    - column: 
+                        name:  abv
+                        type: text
+    - changeSet:
+        id: 3.0.2.update-column-values
+        author: Mothusi Molorane
+        changes:
+            - update:
+                columns:
+                    - column:
+                        name:  name
+                        value: Location Branch
+                    - column:
+                        name:  abv
+                        value: LB
+                tableName:  church_category
+                where:  id=1
+            - update:
+                columns:
+                    - column:
+                        name:  abv
+                        value: HQ
+                tableName:  church_category
+                where:  id=2
+    - changeSet:
+        id: 3.0.3.add-campus-church-category
+        author:  Mothusi Molorane
+        changes:
+            - insert:
+                columns:
+                    - column:
+                        name:  name
+                        value:  Campus Church
+                    - column:
+                        name:  abv
+                        value:  CC
+                tableName:  church_category
+    - changeSet:
+        id: 3.0.4.update-location-church-values
+        author: Mothusi Molorane
+        changes:
+            - update:
+                columns:
+                    - column:
+                        name:  name
+                        value: Location Church
+                    - column:
+                        name:  abv
+                        value: LC
+                tableName:  church_category
+                where:  id=1
+    -  changeSet:  
+        id:  3.0.5.rename-table-to-member_qualification 
+        author:  Mothusi Molorane 
+        changes:  
+            -  renameTable:   
+                newTableName:  member_qualification  
+                oldTableName:  student 
