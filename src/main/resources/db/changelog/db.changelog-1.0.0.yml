@@ -76,6 +76,7 @@ databaseChangeLog:
                         name:  user_id
                         type:  BIGSERIAL
                         constraints:
+                           primaryKey: true
                            foreignKeyName: fk_account_info_user_id
                            references: account(user_id)
                            nullable: false
