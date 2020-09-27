@@ -628,3 +628,17 @@ databaseChangeLog:
                 separator: ','
                 tableName: offering_type
                 usePreparedStatements: true
+    - changeSet:
+        id: 4.2.1.add-column-offering-type
+        author: Mothusi Molorane
+        changes:
+            - addColumn:
+                tableName: offering
+                columns:
+                    - column: 
+                        name: offering_type
+                        type: BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_offering_offering_type
+                           references: offering_type(id)
+                           nullable: false
