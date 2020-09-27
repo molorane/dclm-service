@@ -484,4 +484,147 @@ databaseChangeLog:
                     - column:
                         name: about
                         type: text
-    
+    - changeSet:
+        id:  4.1.7.add-table-convertion-info
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  convertion_info
+                columns:
+                    - column:
+                        name:  user_id
+                        type:  BIGSERIAL
+                        constraints:
+                            primaryKey: true
+                            foreignKeyName: fk_convertion_info_user_id
+                            references: account(user_id)
+                            nullable: false
+                    - column:
+                        name:  convertion_date
+                        type:  date
+                        constraints:
+                           nullable: true
+                    - column:
+                        name: church_id
+                        type: BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_convertion_info_church_id
+                            references: church(id)
+                            nullable: true
+                    - column:
+                        name:  other_place
+                        type:  varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  spiritual_father_id
+                        type:  BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_convertion_info_spiritual_father
+                            references: account(user_id)
+                            nullable: true
+                    - column:
+                        name:  spiritual_father
+                        type:  varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  comments
+                        type:  text
+    - changeSet:
+        id:  4.1.8.add-table-offering
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  offering
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name:  att_id
+                        type:  BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_offering_info_att_id
+                            references: attendance(id)
+                            nullable: false
+                    - column:
+                        name:  amount
+                        type:  decimal
+                        constraints:
+                           nullable: true
+                    - column:
+                        name:  recorded_by
+                        type:  BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_offering_info_recorded_by
+                            references: account(user_id)
+                            nullable: false
+                    - column:
+                        name:  record_date
+                        type:  date
+                        defaultValueComputed: NOW()
+                        constraints:
+                           nullable: false
+                    - column:
+                        name: signature1
+                        type: BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_offering_info_signature1
+                            references: account(user_id)
+                            nullable: true
+                    - column:
+                        name:  update_by
+                        type:  BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_offering_info_update_by
+                            references: account(user_id)
+                            nullable: false
+                    - column:
+                        name:  update_date
+                        type:  date
+                        defaultValueComputed: NOW()
+    - changeSet:
+        id:  4.1.9.add-table-offering-type
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  offering_type
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name: name
+                        type: varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name: abv
+                        type: varchar(5)
+                        constraints:
+                           nullable: false
+    - changeSet:
+        id: 4.2.0.load-offering-types
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                encoding: UTF-8
+                file: ../data/offering-types.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: offering_type
+                usePreparedStatements: true
