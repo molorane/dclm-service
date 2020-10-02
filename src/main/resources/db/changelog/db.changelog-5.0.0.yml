@@ -255,3 +255,115 @@ databaseChangeLog:
                         name: update_date
                         type: TIMESTAMP
                         defaultValueComputed: NOW()
+    - changeSet:
+        id:  5.0.5.add-table-stmc-course
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  stmc_course
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name: name
+                        type: varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name: abv
+                        type: varchar(5)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name: desc
+                        type: text
+                        constraints:
+                           nullable: true
+    - changeSet:
+        id: 5.0.6.load-smtc-courses
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                encoding: UTF-8
+                file: ../data/stmc-courses.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: stmc_course
+                usePreparedStatements: true
+    - changeSet:
+        id:  5.0.1.add-table-stmc-registrations
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  stmc_registration
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name:  stmc_id
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_stmc_registration_stmc_id
+                           references: special_meeting(id)
+                           nullable: false
+                    - column:
+                        name:  student
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_stmc_registration_student
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name:  course
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_stmc_registration_course
+                           references: stmc_course(id)
+                           nullable: false
+                    - column:
+                        name:  recorded_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_stmc_registration_record_by
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name: record_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  updated_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_stmc_registration_updated_by
+                           references: account(user_id)
+                    - column:
+                        name: update_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+    - changeSet:
+        id: 5.0.7.add-unique-contraint-stmc_course-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_stmc_course_name
+                tableName: stmc_course
+                columnNames: name
+                validate:  true
