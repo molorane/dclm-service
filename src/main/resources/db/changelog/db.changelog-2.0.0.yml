@@ -236,6 +236,9 @@ databaseChangeLog:
             - loadData:
                 columns:
                     - column:
+                        name: id
+                        type: numeric
+                    - column:
                         name: name
                         type: string
                     - column:
@@ -325,6 +328,18 @@ databaseChangeLog:
                     - column:
                         name: profile
                         type: string
+                    - column:
+                        name: title_id
+                        type: numeric
+                    - column:
+                        name: birth_city
+                        type: numeric
+                    - column:
+                        name: mother_tongue
+                        type: numeric
+                    - column:
+                        name: recorded_by
+                        type: numeric
                 encoding: UTF-8
                 file: ../data/account-info.csv
                 relativeToChangelogFile: true

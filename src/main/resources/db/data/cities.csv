@@ -1,7 +1,7 @@
-name,abv,state_id
-Johannesburg,JHB,7
-Pretoria,PTR,7
-Bloemfontein,BFN,5
-Ladybrand,LDB,5
-Botshabelo,BTL,5
-Evaton,EVTN,7
+id,name,abv,state_id
+1,Johannesburg,JHB,7
+2,Pretoria,PTR,7
+3,Bloemfontein,BFN,5
+4,Ladybrand,LDB,5
+5,Botshabelo,BTL,5
+6,Evaton,EVTN,7

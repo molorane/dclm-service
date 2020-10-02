@@ -299,6 +299,11 @@ databaseChangeLog:
                         type: varchar(50)
                         constraints:
                            nullable: false
+                    - column: 
+                        name: abv
+                        type: varchar(5)
+                        constraints:
+                           nullable: false
                     - column:
                         name:  institution_type_id
                         type:  BIGSERIAL
@@ -306,12 +311,12 @@ databaseChangeLog:
                            foreignKeyName: fk_institution_type_id
                            references: institution_type(id)
                            nullable: false
-                    - column:
-                        name:  country_id
-                        type:  BIGSERIAL
+                    - column: 
+                        name: city_id
+                        type: BIGSERIAL
                         constraints:
-                           foreignKeyName: fk_institution_country_id
-                           references: country(id)
+                           foreignKeyName: fk_institution_city_id
+                           references: city(id)
                            nullable: false
     - changeSet:
         id:  1.1.3.institution-branch
@@ -710,3 +715,154 @@ databaseChangeLog:
                         type:  date
                         constraints:
                            nullable: false
+    - changeSet:
+        id:  1.2.2.add-table-title
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  title
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name: name
+                        type: varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name: abv
+                        type: varchar(5)
+                        constraints:
+                           nullable: false
+    - changeSet:
+        id:  1.2.3.add-table-language
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  language
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name: name
+                        type: varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name: abv
+                        type: varchar(10)
+                        constraints:
+                           nullable: false
+    - changeSet:
+        id: 1.2.4.load-languages
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                encoding: UTF-8
+                file: ../data/languages.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: language
+                usePreparedStatements: true
+    - changeSet:
+        id: 1.2.5.add-column-account-info
+        author: Mothusi Molorane
+        changes:
+            - addColumn:
+                tableName: account_info
+                columns:
+                    - column: 
+                        name: title_id
+                        type: BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_account_info_title_id
+                           references: title(id)
+                           nullable: false
+                    - column: 
+                        name: birth_city
+                        type: BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_account_info_birth_city
+                           references: city(id)
+                           nullable: false
+                    - column: 
+                        name: mother_tongue
+                        type: BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_account_info_mother_tongue
+                           references: language(id)
+                           nullable: false
+                    - column:
+                        name: street_name
+                        type: varchar(50)
+                    - column:
+                        name: street_no
+                        type: varchar(50)
+                    - column:
+                        name: postal_code
+                        type: varchar(10)
+                    - column:
+                        name: telephone
+                        type: varchar(20)
+                    - column:
+                        name: cell
+                        type: varchar(20)
+                    - column:
+                        name: recorded_by
+                        type: BIGSERIAL
+                        constraints:
+                            foreignKeyName: fk_account_info_recorded_by
+                            references: account(user_id)
+                            nullable: false
+                    - column:
+                        name: record_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  updated_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_account_info_updated_by
+                           references: account(user_id)
+                    - column:
+                        name: update_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+                    - column:
+                        name: about
+                        type: text
+    - changeSet:
+        id: 1.2.5.load-titles
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                encoding: UTF-8
+                file: ../data/titles.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: title
+                usePreparedStatements: true

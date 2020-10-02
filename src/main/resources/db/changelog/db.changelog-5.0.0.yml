@@ -1,0 +1,257 @@
+databaseChangeLog:
+    - changeSet:
+        id:  5.0.0.add-table-student
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  student
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name:  user_id
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_campus_student_user_id
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name:  institution_id
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_campus_student_institution_id
+                           references: institution_branch(id)
+                           nullable: false
+                    - column:
+                        name:  course_id
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_campus_student_course_id
+                           references: course(id)
+                           nullable: false
+                    - column:
+                        name:  admin_year
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  qual_span
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  comp_year
+                        type:  int
+                        defaultValue: 0
+                    - column:
+                        name:  status
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_campus_student_status
+                           references: status(id)
+                           nullable: false
+                    - column:
+                        name:  recorded_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_campus_student_record_by
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name: record_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  updated_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_campus_student_updated_by
+                           references: account(user_id)
+                    - column:
+                        name: update_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+    - changeSet:
+        id:  5.0.1.add-table-wedding
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  wedding
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name:  bride_groom
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_wedding_bride_groom
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name:  bride
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_wedding_bride
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name:  wed_date
+                        type:  date
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  pastor
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_wedding_pastor
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name:  bride_groom_witness
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_wedding_bride_groom_witness
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name:  bride_witness
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_wedding_bride_witness
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name:  dowry
+                        type:  decimal
+                        defaultValue: 0
+                    - column:
+                        name:  dowry_comments
+                        type:  text
+                    - column:
+                        name:  host_church
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_wedding_host_church
+                           references: church(id)
+                           nullable: true
+                    - column:
+                        name:  hired_place
+                        type:  varchar(100)
+                    - column:
+                        name:  recorded_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_wedding_record_by
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name: record_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  updated_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_wedding_updated_by
+                           references: account(user_id)
+                    - column:
+                        name: update_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+    - changeSet:
+        id:  5.0.2.add-table-position
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  position
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name: name
+                        type: varchar(50)
+                        constraints:
+                           nullable: false
+                    - column:
+                        name: abv
+                        type: varchar(5)
+                        constraints:
+                           nullable: false
+    - changeSet:
+        id: 5.0.3.positions
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                encoding: UTF-8
+                file: ../data/positions.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: position
+                usePreparedStatements: true
+    - changeSet:
+        id:  5.0.1.add-table-campus-member-positions
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  student_position
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name:  student
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_student_position_student
+                           references: student(user_id)
+                           nullable: false
+                    - column:
+                        name:  m_year
+                        type:  int
+                    - column:
+                        name:  recorded_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_student_position_record_by
+                           references: account(user_id)
+                           nullable: false
+                    - column:
+                        name: record_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()
+                        constraints:
+                           nullable: false
+                    - column:
+                        name:  updated_by
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_student_position_updated_by
+                           references: account(user_id)
+                    - column:
+                        name: update_date
+                        type: TIMESTAMP
+                        defaultValueComputed: NOW()

@@ -50,6 +50,12 @@ databaseChangeLog:
                     - column:
                         name:  id
                         type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name:  meeting_category
+                        type:  BIGSERIAL
                         constraints:
                            foreignKeyName: fk_special_meeting_meeting_categry_id
                            references: meeting_category(id)
@@ -242,79 +248,14 @@ databaseChangeLog:
                            references: account(user_id)
                            nullable: false
     - changeSet:
-        id: 4.0.4.add-column-state-id
-        author: Mothusi Molorane
-        changes:
-            - addColumn:
-                tableName: institution
-                columns:
-                    - column: 
-                        name: state_id
-                        type: BIGSERIAL
-                        constraints:
-                           foreignKeyName: fk_institution_state_id
-                           references: state(id)
-                           nullable: false
-    - changeSet:
-        id: 4.0.5.drop-column-institution-country_id
-        author: Mothusi Molorane
-        changes:
-            - sql:
-                ALTER TABLE institution DROP FOREIGN KEY fk_institution_country_id
-            - dropColumn:
-                tableName: institution
-                columns:
-                    - column:
-                        name: country_id
-    - changeSet:
-        id: 4.0.6.add-column-abv
-        author: Mothusi Molorane
-        changes:
-            - addColumn:
-                tableName: institution
-                columns:
-                    - column: 
-                        name: abv
-                        type: varchar(5)
-                        constraints:
-                           nullable: false
-    - changeSet:
-        id: 4.0.7.move-column
-        author: Mothusi Molorane
-        changes:
-            - sql:
-                ALTER TABLE institution CHANGE abv abv VARCHAR(5) NOT NULL AFTER name
-    - changeSet:
-        id: 4.0.8.add-column-city-id
-        author: Mothusi Molorane
-        changes:
-            - addColumn:
-                tableName: institution
-                columns:
-                    - column: 
-                        name: city_id
-                        type: BIGSERIAL
-                        constraints:
-                           foreignKeyName: fk_institution_city_id
-                           references: city(id)
-                           nullable: false
-    - changeSet:
-        id: 4.0.9.drop-column-institution-state_id
-        author: Mothusi Molorane
-        changes:
-            - sql:
-                ALTER TABLE institution DROP FOREIGN KEY fk_institution_state_id
-            - dropColumn:
-                tableName: institution
-                columns:
-                    - column:
-                        name: state_id
-    - changeSet:
         id: 4.1.0.load-institutions
         author: Mothusi Molorane
         changes:
             - loadData:
                 columns:
+                    - column:
+                        name: id
+                        type: numeric
                     - column:
                         name: name
                         type: string
@@ -333,157 +274,6 @@ databaseChangeLog:
                 separator: ','
                 tableName: institution
                 usePreparedStatements: true
-    - changeSet:
-        id:  4.1.2.add-table-title
-        author:  Mothusi Molorane
-        changes:
-           - createTable:
-                tableName:  title
-                columns:
-                    - column:
-                        name:  id
-                        type:  BIGSERIAL
-                        autoIncrement: true
-                        constraints:
-                            primaryKey: true
-                    - column:
-                        name: name
-                        type: varchar(50)
-                        constraints:
-                           nullable: false
-                    - column:
-                        name: abv
-                        type: varchar(5)
-                        constraints:
-                           nullable: false
-    - changeSet:
-        id:  4.1.3.add-table-language
-        author:  Mothusi Molorane
-        changes:
-           - createTable:
-                tableName:  language
-                columns:
-                    - column:
-                        name:  id
-                        type:  BIGSERIAL
-                        autoIncrement: true
-                        constraints:
-                            primaryKey: true
-                    - column:
-                        name: name
-                        type: varchar(50)
-                        constraints:
-                           nullable: false
-                    - column:
-                        name: abv
-                        type: varchar(10)
-                        constraints:
-                           nullable: false
-    - changeSet:
-        id: 4.1.4.load-languages
-        author: Mothusi Molorane
-        changes:
-            - loadData:
-                columns:
-                    - column:
-                        name: name
-                        type: string
-                    - column:
-                        name: abv
-                        type: string
-                encoding: UTF-8
-                file: ../data/languages.csv
-                relativeToChangelogFile: true
-                separator: ','
-                tableName: language
-                usePreparedStatements: true
-    - changeSet:
-        id: 4.1.5.load-titles
-        author: Mothusi Molorane
-        changes:
-            - loadData:
-                columns:
-                    - column:
-                        name: name
-                        type: string
-                    - column:
-                        name: abv
-                        type: string
-                encoding: UTF-8
-                file: ../data/titles.csv
-                relativeToChangelogFile: true
-                separator: ','
-                tableName: title
-                usePreparedStatements: true
-    - changeSet:
-        id: 4.1.6.add-column-account-info
-        author: Mothusi Molorane
-        changes:
-            - addColumn:
-                tableName: account_info
-                columns:
-                    - column: 
-                        name: title_id
-                        type: BIGSERIAL
-                        constraints:
-                           foreignKeyName: fk_account_info_title_id
-                           references: title(id)
-                           nullable: false
-                    - column: 
-                        name: birth_city
-                        type: BIGSERIAL
-                        constraints:
-                           foreignKeyName: fk_account_info_birth_city
-                           references: city(id)
-                           nullable: false
-                    - column: 
-                        name: mother_tongue
-                        type: BIGSERIAL
-                        constraints:
-                           foreignKeyName: fk_account_info_mother_tongue
-                           references: language(id)
-                           nullable: false
-                    - column:
-                        name: street_name
-                        type: varchar(50)
-                    - column:
-                        name: street_no
-                        type: varchar(50)
-                    - column:
-                        name: postal_code
-                        type: varchar(10)
-                    - column:
-                        name: telephone
-                        type: varchar(20)
-                    - column:
-                        name: cell
-                        type: varchar(20)
-                    - column:
-                        name: recorded_by
-                        type: BIGSERIAL
-                        constraints:
-                            foreignKeyName: fk_account_info_recorded_by
-                            references: account(user_id)
-                            nullable: false
-                    - column:
-                        name: record_date
-                        type: TIMESTAMP
-                        defaultValueComputed: NOW()
-                        constraints:
-                           nullable: false
-                    - column:
-                        name:  updated_by
-                        type:  BIGSERIAL
-                        constraints:
-                           foreignKeyName: fk_account_info_updated_by
-                           references: account(user_id)
-                    - column:
-                        name: update_date
-                        type: TIMESTAMP
-                        defaultValueComputed: NOW()
-                    - column:
-                        name: about
-                        type: text
     - changeSet:
         id:  4.1.7.add-table-convertion-info
         author:  Mothusi Molorane
@@ -642,3 +432,93 @@ databaseChangeLog:
                            foreignKeyName: fk_offering_offering_type
                            references: offering_type(id)
                            nullable: false
+    - changeSet:
+        id: 4.2.2.add-unique-contraint-course-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_course_name
+                tableName: course
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.3.add-unique-contraint-role-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_role_name
+                tableName: app_role
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.4.add-unique-contraint-church-category-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_church_category_name
+                tableName: church_category
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.5.add-unique-contraint-institution-type-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_institution_type_name
+                tableName: institution_type
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.6.add-unique-contraint-meeting-category-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_meeting_category_name
+                tableName: meeting_category
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.7.add-unique-contraint-offering-type-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_offering_type_name
+                tableName: offering_type
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.8.add-unique-contraint-qualification-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_qualification_name
+                tableName: qualification
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.9.add-unique-contraint-service-session-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_service_session_name
+                tableName: service_session
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.10.add-unique-contraint-service-type-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_service_type_name
+                tableName: service_type
+                columnNames: name
+                validate:  true
+    - changeSet:
+        id: 4.2.11.add-unique-contraint-status-name
+        author: Mothusi Molorane
+        changes:
+            - addUniqueConstraint:
+                constraintName: uk_status_name
+                tableName: status
+                columnNames: name
+                validate:  true
