@@ -404,3 +404,87 @@ databaseChangeLog:
                constraintName: pk_member_language
                tableName: member_language
                validate: true
+    - changeSet:
+        id:  5.1.0.add-table-permission
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  permission
+                columns:
+                    - column:
+                        name:  id
+                        type:  BIGSERIAL
+                        autoIncrement: true
+                        constraints:
+                            primaryKey: true
+                    - column:
+                        name: name
+                        type: varchar(50)
+                        constraints:
+                           nullable: false
+    - changeSet:
+        id: 5.1.1.load-permissions
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: name
+                        type: string
+                    - column:
+                        name: abv
+                        type: string
+                encoding: UTF-8
+                file: ../data/permission.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: permission
+                usePreparedStatements: true
+    - changeSet:
+        id:  5.1.2.add-table-role-permission
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  role_permission
+                columns:
+                    - column:
+                        name:  role
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_role_permission_role
+                           references: app_role(id)
+                           nullable: false
+                    - column:
+                        name:  permission
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_role_permission_role_permission
+                           references: permission(id)
+                           nullable: false
+    - changeSet:
+        id: 5.1.3.addPrimaryKey-role-permission
+        author: Mothusi Molorane
+        changes:
+            - addPrimaryKey:
+               columnNames: role, permission
+               constraintName: pk_role_permission
+               tableName: role_permission
+               validate: true
+    - changeSet:
+        id: 5.1.1.load-role-permissions
+        author: Mothusi Molorane
+        changes:
+            - loadData:
+                columns:
+                    - column:
+                        name: role
+                        type: numeric
+                    - column:
+                        name: permission
+                        type: numeric
+                encoding: UTF-8
+                file: ../data/role-permission.csv
+                relativeToChangelogFile: true
+                separator: ','
+                tableName: role_permission
+                usePreparedStatements: true

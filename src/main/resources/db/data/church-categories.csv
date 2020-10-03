@@ -1,3 +1,8 @@
-name
-Branch
-Head Quarters
+id,name,abv
+1, HeadQuarters, HQ
+2, Country HeadQuarters, CHQ
+3, State HeadQuarters, SHQ
+4, City HeadQuarters, CHQ
+5, Location Church, LC
+6, Campus Church, HC
+7, House Church, HC

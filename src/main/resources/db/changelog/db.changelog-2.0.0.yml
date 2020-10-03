@@ -215,13 +215,29 @@ databaseChangeLog:
                 tableName: service_session
                 usePreparedStatements: true
     - changeSet:
+        id: 3.0.1.add-column-church-category-abv
+        author: Mothusi Molorane
+        changes:
+            - addColumn:
+                tableName: church_category
+                columns:
+                    - column: 
+                        name: abv
+                        type: varchar(6)
+    - changeSet:
         id: 2.1.5.load-church-categories
         author: Mothusi Molorane
         changes:
             - loadData:
                 columns:
                     - column:
+                        name: id
+                        type: numeric
+                    - column:
                         name: name
+                        type: string
+                    - column:
+                        name: abv
                         type: string
                 encoding: UTF-8
                 file: ../data/church-categories.csv

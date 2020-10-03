@@ -19,7 +19,7 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name: desc
-                        type: varchar(50)
+                        type: varchar(255)
     - changeSet:
         id:  1.0.2.user-table
         author:  Mothusi Molorane
