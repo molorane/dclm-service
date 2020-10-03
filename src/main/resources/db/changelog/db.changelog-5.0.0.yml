@@ -230,6 +230,13 @@ databaseChangeLog:
                            references: student(user_id)
                            nullable: false
                     - column:
+                        name:  position
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_student_position_position
+                           references: position(id)
+                           nullable: false
+                    - column:
                         name:  m_year
                         type:  int
                     - column:
@@ -367,3 +374,33 @@ databaseChangeLog:
                 tableName: stmc_course
                 columnNames: name
                 validate:  true
+    - changeSet:
+        id:  5.0.8.add-table-other-languages
+        author:  Mothusi Molorane
+        changes:
+           - createTable:
+                tableName:  member_language
+                columns:
+                    - column:
+                        name:  member
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_member_language_member
+                           references: account_info(user_id)
+                           nullable: false
+                    - column:
+                        name:  language
+                        type:  BIGSERIAL
+                        constraints:
+                           foreignKeyName: fk_member_language_language
+                           references: language(id)
+                           nullable: false
+    - changeSet:
+        id: 5.0.9.addPrimaryKey-member-language
+        author: Mothusi Molorane
+        changes:
+            - addPrimaryKey:
+               columnNames: member, language
+               constraintName: pk_member_language
+               tableName: member_language
+               validate: true
