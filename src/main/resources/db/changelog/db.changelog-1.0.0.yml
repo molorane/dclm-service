@@ -19,7 +19,7 @@ databaseChangeLog:
                            nullable: false
                     - column:
                         name: desc
-                        type: varchar(255)
+                        type: TEXT
     - changeSet:
         id:  1.0.2.user-table
         author:  Mothusi Molorane
@@ -792,21 +792,18 @@ databaseChangeLog:
                         constraints:
                            foreignKeyName: fk_account_info_title_id
                            references: title(id)
-                           nullable: false
                     - column: 
                         name: birth_city
                         type: BIGSERIAL
                         constraints:
                            foreignKeyName: fk_account_info_birth_city
                            references: city(id)
-                           nullable: false
                     - column: 
                         name: mother_tongue
                         type: BIGSERIAL
                         constraints:
                            foreignKeyName: fk_account_info_mother_tongue
                            references: language(id)
-                           nullable: false
                     - column:
                         name: street_name
                         type: varchar(50)

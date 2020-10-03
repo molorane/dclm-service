@@ -8,9 +8,9 @@ id,name,desc
 7,ATTENDANCE_SIGNATORY,A member responsible for signing an attendance
 8,NATIONAL_CAMPUS_PASTOR,A user who overseers all campuses in the country.
 9,CAMPUS_PASTOR,Is a pastor who looks after a church at a university.
-10,COUNTRY_ADMIN,A member that's responsible for creating other roles in the country, a User with ADMIN role is responsible for adding this role.
+10,COUNTRY_ADMIN,A member that is responsible for creating other roles in the country
 11,STATE_ADMIN,A member that is responsible for the State data and adding users in the state.
-12,TITHE_OFFERING_COLLECTION,A member that's responsible for collecting tithe and offering of a particular church.
+12,TITHE_OFFERING_COLLECTION,A member that is responsible for collecting tithe and offering of a particular church.
 13,TITHE_OFFERING_SIGNATORY,A member responsible for signing an tithe or offering
 14,STATE_PASTOR,A pastor who overseers the state churches.
 15,STATE_BURSOR,A member that overseers the state funds.
