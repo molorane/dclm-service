@@ -435,7 +435,7 @@ databaseChangeLog:
                         name: abv
                         type: string
                 encoding: UTF-8
-                file: ../data/permission.csv
+                file: ../data/permissions.csv
                 relativeToChangelogFile: true
                 separator: ','
                 tableName: permission
@@ -483,7 +483,7 @@ databaseChangeLog:
                         name: permission
                         type: numeric
                 encoding: UTF-8
-                file: ../data/role-permission.csv
+                file: ../data/role-permissions.csv
                 relativeToChangelogFile: true
                 separator: ','
                 tableName: role_permission

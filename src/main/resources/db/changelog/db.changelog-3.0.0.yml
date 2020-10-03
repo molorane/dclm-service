@@ -126,16 +126,6 @@ databaseChangeLog:
                 tableName: attendance
                 usePreparedStatements: true
     - changeSet:
-        id: 3.0.1.add-column-abv
-        author: Mothusi Molorane
-        changes:
-            - addColumn:
-                tableName: church_category
-                columns:
-                    - column: 
-                        name:  abv
-                        type: text
-    - changeSet:
         id: 3.0.2.update-column-values
         author: Mothusi Molorane
         changes:
