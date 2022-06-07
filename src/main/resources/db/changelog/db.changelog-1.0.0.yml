@@ -64,7 +64,7 @@ databaseChangeLog:
                     - column:
                         name: expiry_date
                         type: date
-                        defaultValueComputed: NOW()
+                        defaultValue: '2023-02-02'
     - changeSet:
         id:  1.0.3.account_info
         author:  Mothusi Molorane
