@@ -64,7 +64,7 @@ databaseChangeLog:
                     - column:
                         name: expiry_date
                         type: date
-                        defaultValueComputed: DATE_ADD(NOW(),INTERVAL 30 DAY)
+                        defaultValueComputed: NOW()
     - changeSet:
         id:  1.0.3.account_info
         author:  Mothusi Molorane
